@@ -276,30 +276,27 @@
             
             <section id="ethics" class="bg-white rounded-lg shadow-lg p-6 md:p-8 info-card">
                 <h2 class="text-3xl font-bold text-red-600 mb-4">6. The Ethical Imperative: Navigating the Risks</h2>
-                <p class="mb-6 text-lg">The rapid rise of agentic systems introduces profound ethical challenges. These range from economic disruption and job displacement to complex questions of legal liability, intellectual property, and serious security risks in domains like bioweapons and autonomous warfare.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <p class="mb-6 text-lg">The immense power of agentic AI is matched only by the scale of the ethical and societal challenges it creates. These are not future problems; they are present-day realities that demand proactive governance. Navigating this landscape requires a clear-eyed assessment of the interconnected risks across the economy, law, and national security.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div class="chart-container mx-auto">
                         <canvas id="ethicsDonutChart"></canvas>
+                        <p class="text-center mt-4 text-gray-600">This chart breaks down key areas of public and expert concern regarding the risks of advanced AI. Economic disruption and security threats represent the largest segments of perceived risk.</p>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-red-700 mb-2">Key Ethical Risk Areas</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <span class="text-red-500 font-bold text-xl mr-3">💼</span>
-                                <div><strong>Economic Disruption:</strong> Automation could displace up to 800 million jobs by 2030, requiring massive societal investment in reskilling and new social safety nets.</div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-red-500 font-bold text-xl mr-3">⚖️</span>
-                                <div><strong>Liability & Law:</strong> When an autonomous system causes harm, who is responsible? Our legal frameworks are unprepared for this "responsibility gap."</div>
-                            </li>
-                             <li class="flex items-start">
-                                <span class="text-red-500 font-bold text-xl mr-3">🛡️</span>
-                                <div><strong>Security Threats:</strong> The same AI that designs life-saving drugs could be used to create novel bioweapons, and autonomous drones raise questions about lethal autonomous weapons (LAWS).</div>
-                            </li>
-                        </ul>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-red-700 mb-2 flex items-center"><span class="text-2xl mr-3">💼</span>Economic Disruption</h3>
+                            <p>While promising productivity gains, automation threatens widespread job displacement, particularly in routine cognitive and manual labor. This could exacerbate inequality, requiring massive societal investment in reskilling, education, and new social safety nets to manage the transition.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-red-700 mb-2 flex items-center"><span class="text-2xl mr-3">⚖️</span>Legal & Liability Gaps</h3>
+                            <p>When an autonomous system causes harm, who is responsible? Our current legal frameworks are unprepared for this "responsibility gap," struggling to assign fault between the manufacturer, developer, and owner. This ambiguity creates significant risk and hinders accountability.</p>
+                        </div>
+                         <div>
+                            <h3 class="text-xl font-bold text-red-700 mb-2 flex items-center"><span class="text-2xl mr-3">🛡️</span>Security & Dual-Use Threats</h3>
+                            <p>The same AI that designs life-saving drugs could be used to create novel bioweapons. The same robotics that deliver packages could be used for autonomous warfare. This "dual-use" dilemma means that powerful tools can be easily weaponized, creating profound security risks that demand robust technical and policy safeguards.</p>
+                        </div>
                     </div>
                 </div>
-                <p class="text-center mt-4 text-gray-600">The chart visualizes the potential scale of job displacement due to automation. Addressing this requires proactive governance and ethical frameworks to ensure these powerful technologies benefit society as a whole.</p>
             </section>
 
         </main>
@@ -334,6 +331,8 @@
                 tertiaryBorder: 'rgba(5, 150, 105, 1)', // emerald-600
                 accentBg: 'rgba(225, 29, 72, 0.2)', // rose-600 with opacity
                 accentBorder: 'rgba(225, 29, 72, 1)', // rose-600
+                warningBg: 'rgba(245, 158, 11, 0.2)', // amber-500 with opacity
+                warningBorder: 'rgba(245, 158, 11, 1)', // amber-500
             };
 
             const tooltipTitleCallback = (tooltipItems) => {
@@ -444,12 +443,15 @@
             });
 
             const ethicsData = {
-                labels: ['Jobs at Risk of Displacement', 'Jobs Transformed or Created'],
+                labels: ['Economic Disruption', 'Security & Dual-Use', 'Legal & Liability Gaps', 'IP Conflicts', 'Algorithmic Bias'],
                 datasets: [{
-                    label: 'Impact of Automation on Jobs',
-                    data: [40, 60],
+                    label: 'Distribution of Ethical Concerns',
+                    data: [35, 25, 20, 10, 10],
                     backgroundColor: [
                         brilliantBlues.accentBorder,
+                        brilliantBlues.warningBorder,
+                        brilliantBlues.secondaryBorder,
+                        brilliantBlues.tertiaryBorder,
                         brilliantBlues.border,
                     ],
                     hoverOffset: 4
@@ -483,7 +485,3 @@
     </script>
 </body>
 </html>
-```
-
-***
-*July 31, 2025, 2:25 PM I
