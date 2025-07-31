@@ -6,6 +6,9 @@
     <title>The Rise of Agentic AI and Robotics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0KOVEMVIROPtOQ9dNAKmn+CBUMuCSubBEUGNG9dHzcsaTeBC7ihTM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -37,6 +40,7 @@
             font-size: 2rem;
             color: #059669;
             margin: 0 1rem;
+            font-weight: bold;
         }
         .flow-box {
             border: 2px solid #059669;
@@ -49,6 +53,52 @@
         .icon-style {
             font-size: 2.5rem;
             line-height: 1;
+        }
+        .info-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .math-card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .math-card-front {
+            padding: 1.5rem;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+        .math-card-back {
+            padding: 1.5rem;
+            opacity: 0;
+            max-height: 0;
+            transition: opacity 0.4s ease, max-height 0.5s ease-in-out;
+            visibility: hidden;
+        }
+        .math-card.is-flipped .math-card-front {
+            opacity: 0;
+            max-height: 0;
+            padding: 0;
+            visibility: hidden;
+        }
+        .math-card.is-flipped .math-card-back {
+            opacity: 1;
+            max-height: 500px; /* Adjust as needed */
+            visibility: visible;
+        }
+        .katex-display {
+            margin: 1em 0;
+            font-size: 1.2em;
+        }
+        .var-explanation {
+            margin-left: 1rem;
+            border-left: 3px solid #1D4ED8;
+            padding-left: 1rem;
         }
     </style>
 </head>
@@ -63,7 +113,7 @@
 
         <main class="space-y-16">
 
-            <section id="post-tokenization" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <section id="post-tokenization" class="bg-white rounded-lg shadow-lg p-6 md:p-8 info-card">
                 <h2 class="text-3xl font-bold text-blue-700 mb-4">1. Post-Tokenization: A More Robust AI Foundation</h2>
                 <p class="mb-6 text-lg">A new generation of AI models is moving beyond traditional "tokenization" by processing raw data bytes directly. This makes them faster, more efficient, and universally capable across all languages and data types, removing a key bottleneck for real-world AI applications.</p>
                 <div class="chart-container mx-auto">
@@ -72,7 +122,7 @@
                 <p class="text-center mt-4 text-gray-600">This chart compares the computational efficiency (in Floating-Point Operations or FLOPs) of new byte-level models. Lower FLOPs indicate greater efficiency. The Byte Latent Transformer (BLT) shows a significant reduction, achieving similar performance with 50% fewer computational resources than traditional models.</p>
             </section>
 
-            <section id="agentic-ai" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <section id="agentic-ai" class="bg-white rounded-lg shadow-lg p-6 md:p-8 info-card">
                 <h2 class="text-3xl font-bold text-blue-700 mb-4">2. Agentic AI: Autonomous Discovery & Design</h2>
                 <p class="mb-6 text-lg">Agentic AI represents a shift from creating content to taking action. These systems can autonomously set goals, make plans, and execute complex tasks. Advanced frameworks like "AI Scientist" and "ADAS" can even discover new scientific knowledge and design better AI agents, creating a cycle of self-improvement.</p>
                 <div class="w-full overflow-x-auto">
@@ -94,7 +144,7 @@
                  <p class="text-center mt-4 text-gray-600">The diagram above illustrates the autonomous pipeline of the "AI Scientist-v2." This agentic system can manage the entire research process from initial hypothesis to a peer-review-ready publication with minimal human input, accelerating the pace of scientific discovery.</p>
             </section>
 
-            <section id="robotics" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <section id="robotics" class="bg-white rounded-lg shadow-lg p-6 md:p-8 info-card">
                 <h2 class="text-3xl font-bold text-blue-700 mb-4">3. Embodied Intelligence: The VLA Revolution in Robotics</h2>
                 <p class="mb-6 text-lg">Vision-Language-Action (VLA) models are the brains powering the next generation of robots. They translate visual data and natural language commands into precise physical actions, enabling robots to perform complex, real-world tasks. This technology is making robots more affordable, powerful, and adaptable.</p>
                 <div class="chart-container mx-auto">
@@ -103,7 +153,7 @@
                 <p class="text-center mt-4 text-gray-600">This radar chart compares leading VLA architectures. Google's Gemini excels at general reasoning, Figure AI's Helix provides high-speed control for humanoids, and the open-source SmolVLA prioritizes accessibility, running on a single GPU.</p>
             </section>
             
-            <section id="neuromorphic" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <section id="neuromorphic" class="bg-white rounded-lg shadow-lg p-6 md:p-8 info-card">
                 <h2 class="text-3xl font-bold text-blue-700 mb-4">4. Physical & Neuromorphic Intelligence</h2>
                 <p class="mb-6 text-lg">Beyond software, intelligence is being redesigned at the hardware level. Neuromorphic chips mimic the brain's efficiency, while soft robotics and liquid neural networks draw inspiration from biology to create robots that are adaptive, resilient, and think more like natural organisms.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
@@ -123,7 +173,86 @@
                 </div>
             </section>
 
-            <section id="sectors" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <section id="math-engine" class="bg-gray-200 rounded-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-gray-700 mb-2">The Engine Room</h2>
+                <p class="text-lg text-center text-gray-600 mb-8">A Look at the Core Mathematics (Click to Explore)</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Math Card 1 -->
+                    <div class="math-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="math-card-front">
+                            <h3 class="text-2xl font-bold text-blue-800">Self-Attention Mechanism</h3>
+                            <p class="text-gray-500 mt-2">The engine of contextual understanding in Transformers.</p>
+                        </div>
+                        <div class="math-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Formula:</h3>
+                            <div class="text-center">$$ \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$</div>
+                            <h4 class="font-semibold mt-4 mb-2">What it means:</h4>
+                            <div class="space-y-2 text-sm var-explanation">
+                                <p><strong>Q (Query):</strong> A vector for the current word, asking "What's relevant to me?"</p>
+                                <p><strong>K (Key):</strong> Vectors for all words, announcing "This is the info I hold."</p>
+                                <p><strong>V (Value):</strong> Vectors with the actual content of each word.</p>
+                                <p><strong>Why it matters:</strong> This allows the AI to dynamically weigh the importance of every other word when interpreting the current word.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Math Card 2 -->
+                    <div class="math-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="math-card-front">
+                            <h3 class="text-2xl font-bold text-blue-800">The Bellman Equation</h3>
+                            <p class="text-gray-500 mt-2">The heart of decision-making in Reinforcement Learning.</p>
+                        </div>
+                        <div class="math-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Formula:</h3>
+                            <div class="text-center">$$ V(s) = \max_a \left( R(s,a) + \gamma \sum_{s'} P(s'|s,a) V(s') \right) $$</div>
+                            <h4 class="font-semibold mt-4 mb-2">What it means:</h4>
+                            <div class="space-y-2 text-sm var-explanation">
+                                <p><strong>V(s):</strong> The long-term value of being in the current state `s`.</p>
+                                <p><strong>R(s,a):</strong> The immediate reward for taking action `a`.</p>
+                                <p><strong>γ (gamma):</strong> The discount factor; how much to value future rewards.</p>
+                                <p><strong>Why it matters:</strong> This lets an agent learn the best strategy by balancing immediate gains with long-term goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Math Card 3 -->
+                    <div class="math-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="math-card-front">
+                            <h3 class="text-2xl font-bold text-blue-800">Inverse Kinematics</h3>
+                            <p class="text-gray-500 mt-2">The calculation that allows robots to move precisely.</p>
+                        </div>
+                        <div class="math-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Formula (2D Arm):</h3>
+                            <div class="text-center">$$ \theta_2 = \arccos\left(\frac{x^2 + y^2 - L_1^2 - L_2^2}{2L_1L_2}\right) $$</div>
+                            <h4 class="font-semibold mt-4 mb-2">What it means:</h4>
+                            <div class="space-y-2 text-sm var-explanation">
+                                <p><strong>θ (theta):</strong> The angle of a robot's joint.</p>
+                                <p><strong>x, y:</strong> The target coordinates for the robot's hand.</p>
+                                <p><strong>L:</strong> The fixed length of a segment of the robot's arm.</p>
+                                <p><strong>Why it matters:</strong> This solves the problem: "To put my hand *here*, what angles should my joints be?" It's the key to fluid motion.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Math Card 4 -->
+                    <div class="math-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="math-card-front">
+                            <h3 class="text-2xl font-bold text-blue-800">Leaky Integrate-and-Fire</h3>
+                            <p class="text-gray-500 mt-2">The model for efficient, brain-like neuromorphic computing.</p>
+                        </div>
+                        <div class="math-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Formula:</h3>
+                            <div class="text-center">$$ \tau_m \frac{dV(t)}{dt} = - (V(t) - V_{\text{rest}}) + R_m I(t) $$</div>
+                            <h4 class="font-semibold mt-4 mb-2">What it means:</h4>
+                            <div class="space-y-2 text-sm var-explanation">
+                                <p><strong>V(t):</strong> The neuron's voltage at time `t`.</p>
+                                <p><strong>I(t):</strong> The input current flowing into the neuron.</p>
+                                <p><strong>τ (tau):</strong> The neuron's reaction time constant.</p>
+                                <p><strong>Why it matters:</strong> This models a neuron's voltage as a balance between incoming signals and a natural "leak," enabling event-driven, low-power computation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sectors" class="bg-white rounded-lg shadow-lg p-6 md:p-8 info-card">
                 <h2 class="text-3xl font-bold text-blue-700 mb-4">5. Emerging Sectors: AI for Hard Science</h2>
                 <p class="mb-6 text-lg">Agentic AI is moving beyond software to become a fundamental tool for the physical world. It's now being used to automate maritime navigation, evolve better algorithms, and even engineer biology from first principles, tackling challenges in life sciences, environmental monitoring, and core engineering.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -145,7 +274,7 @@
                 </div>
             </section>
             
-            <section id="ethics" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <section id="ethics" class="bg-white rounded-lg shadow-lg p-6 md:p-8 info-card">
                 <h2 class="text-3xl font-bold text-red-600 mb-4">6. The Ethical Imperative: Navigating the Risks</h2>
                 <p class="mb-6 text-lg">The rapid rise of agentic systems introduces profound ethical challenges. These range from economic disruption and job displacement to complex questions of legal liability, intellectual property, and serious security risks in domains like bioweapons and autonomous warfare.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -189,160 +318,39 @@
     </div>
 
     <script>
-        const brilliantBlues = {
-            background: 'rgba(2, 132, 199, 0.2)', // sky-600 with opacity
-            border: 'rgba(2, 132, 199, 1)', // sky-600
-            secondaryBg: 'rgba(13, 148, 136, 0.2)', // teal-600 with opacity
-            secondaryBorder: 'rgba(13, 148, 136, 1)', // teal-600
-            tertiaryBg: 'rgba(5, 150, 105, 0.2)', // emerald-600 with opacity
-            tertiaryBorder: 'rgba(5, 150, 105, 1)', // emerald-600
-            accentBg: 'rgba(225, 29, 72, 0.2)', // rose-600 with opacity
-            accentBorder: 'rgba(225, 29, 72, 1)', // rose-600
-        };
+        document.addEventListener('DOMContentLoaded', function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+            const brilliantBlues = {
+                background: 'rgba(2, 132, 199, 0.2)', // sky-600 with opacity
+                border: 'rgba(2, 132, 199, 1)', // sky-600
+                secondaryBg: 'rgba(13, 148, 136, 0.2)', // teal-600 with opacity
+                secondaryBorder: 'rgba(13, 148, 136, 1)', // teal-600
+                tertiaryBg: 'rgba(5, 150, 105, 0.2)', // emerald-600 with opacity
+                tertiaryBorder: 'rgba(5, 150, 105, 1)', // emerald-600
+                accentBg: 'rgba(225, 29, 72, 0.2)', // rose-600 with opacity
+                accentBorder: 'rgba(225, 29, 72, 1)', // rose-600
+            };
 
-        function wrapLabels(label, maxWidth) {
-            const words = label.split(' ');
-            let lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + word).length > maxWidth) {
-                    lines.push(currentLine.trim());
-                    currentLine = '';
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
                 }
-                currentLine += word + ' ';
-            }
-            lines.push(currentLine.trim());
-            return lines;
-        }
-
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            }
-            return label;
-        };
-        
-        const defaultChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'top',
-                    labels: {
-                        font: {
-                            size: 14,
-                            family: 'Inter'
-                        }
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        title: tooltipTitleCallback
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: { font: { family: 'Inter' } }
-                },
-                x: {
-                    ticks: { font: { family: 'Inter' } }
-                }
-            }
-        };
-
-        const flopsData = {
-            labels: ['Traditional Tokenizer', 'SpaceByte', 'MambaByte', 'Byte Latent Transformer (BLT)'],
-            datasets: [{
-                label: 'Relative FLOPs (Lower is Better)',
-                data: [100, 75, 60, 50],
-                backgroundColor: [
-                    brilliantBlues.accentBg,
-                    brilliantBlues.secondaryBg,
-                    brilliantBlues.tertiaryBg,
-                    brilliantBlues.background
-                ],
-                borderColor: [
-                    brilliantBlues.accentBorder,
-                    brilliantBlues.secondaryBorder,
-                    brilliantBlues.tertiaryBorder,
-                    brilliantBlues.border
-                ],
-                borderWidth: 2
-            }]
-        };
-        new Chart(document.getElementById('flopsChart'), {
-            type: 'bar',
-            data: flopsData,
-            options: defaultChartOptions
-        });
-
-        const roboticsData = {
-            labels: ['General Reasoning', 'Dexterity', 'Real-Time Control', 'Accessibility', 'Collaboration'],
-            datasets: [{
-                label: 'Gemini VLA',
-                data: [5, 4, 3, 2, 4],
-                fill: true,
-                backgroundColor: brilliantBlues.background,
-                borderColor: brilliantBlues.border,
-                pointBackgroundColor: brilliantBlues.border,
-            }, {
-                label: 'Helix',
-                data: [4, 5, 5, 3, 5],
-                fill: true,
-                backgroundColor: brilliantBlues.secondaryBg,
-                borderColor: brilliantBlues.secondaryBorder,
-                pointBackgroundColor: brilliantBlues.secondaryBorder,
-            }, {
-                label: 'SmolVLA',
-                data: [3, 3, 4, 5, 2],
-                fill: true,
-                backgroundColor: brilliantBlues.tertiaryBg,
-                borderColor: brilliantBlues.tertiaryBorder,
-                pointBackgroundColor: brilliantBlues.tertiaryBorder,
-            }]
-        };
-        new Chart(document.getElementById('roboticsRadarChart'), {
-            type: 'radar',
-            data: roboticsData,
-            options: {
-                ...defaultChartOptions,
-                scales: {
-                    r: {
-                        angleLines: { display: true },
-                        suggestedMin: 0,
-                        suggestedMax: 5,
-                        pointLabels: { font: { size: 14, family: 'Inter' } },
-                        ticks: { backdropColor: 'transparent' }
-                    }
-                }
-            }
-        });
-
-        const ethicsData = {
-            labels: ['Jobs at Risk of Displacement', 'Jobs Transformed or Created'],
-            datasets: [{
-                label: 'Impact of Automation on Jobs',
-                data: [40, 60],
-                backgroundColor: [
-                    brilliantBlues.accentBorder,
-                    brilliantBlues.border,
-                ],
-                hoverOffset: 4
-            }]
-        };
-        new Chart(document.getElementById('ethicsDonutChart'), {
-            type: 'doughnut',
-            data: ethicsData,
-            options: {
+                return label;
+            };
+            
+            const defaultChartOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'bottom',
+                        position: 'top',
                         labels: {
                             font: {
                                 size: 14,
@@ -355,9 +363,127 @@
                             title: tooltipTitleCallback
                         }
                     }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { font: { family: 'Inter' } }
+                    },
+                    x: {
+                        ticks: { font: { family: 'Inter' } }
+                    }
                 }
-            }
+            };
+
+            const flopsData = {
+                labels: ['Traditional Tokenizer', 'SpaceByte', 'MambaByte', 'Byte Latent Transformer (BLT)'],
+                datasets: [{
+                    label: 'Relative FLOPs (Lower is Better)',
+                    data: [100, 75, 60, 50],
+                    backgroundColor: [
+                        brilliantBlues.accentBg,
+                        brilliantBlues.secondaryBg,
+                        brilliantBlues.tertiaryBg,
+                        brilliantBlues.background
+                    ],
+                    borderColor: [
+                        brilliantBlues.accentBorder,
+                        brilliantBlues.secondaryBorder,
+                        brilliantBlues.tertiaryBorder,
+                        brilliantBlues.border
+                    ],
+                    borderWidth: 2
+                }]
+            };
+            new Chart(document.getElementById('flopsChart'), {
+                type: 'bar',
+                data: flopsData,
+                options: defaultChartOptions
+            });
+
+            const roboticsData = {
+                labels: ['General Reasoning', 'Dexterity', 'Real-Time Control', 'Accessibility', 'Collaboration'],
+                datasets: [{
+                    label: 'Gemini VLA',
+                    data: [5, 4, 3, 2, 4],
+                    fill: true,
+                    backgroundColor: brilliantBlues.background,
+                    borderColor: brilliantBlues.border,
+                    pointBackgroundColor: brilliantBlues.border,
+                }, {
+                    label: 'Helix',
+                    data: [4, 5, 5, 3, 5],
+                    fill: true,
+                    backgroundColor: brilliantBlues.secondaryBg,
+                    borderColor: brilliantBlues.secondaryBorder,
+                    pointBackgroundColor: brilliantBlues.secondaryBorder,
+                }, {
+                    label: 'SmolVLA',
+                    data: [3, 3, 4, 5, 2],
+                    fill: true,
+                    backgroundColor: brilliantBlues.tertiaryBg,
+                    borderColor: brilliantBlues.tertiaryBorder,
+                    pointBackgroundColor: brilliantBlues.tertiaryBorder,
+                }]
+            };
+            new Chart(document.getElementById('roboticsRadarChart'), {
+                type: 'radar',
+                data: roboticsData,
+                options: {
+                    ...defaultChartOptions,
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            pointLabels: { font: { size: 14, family: 'Inter' } },
+                            ticks: { backdropColor: 'transparent' }
+                        }
+                    }
+                }
+            });
+
+            const ethicsData = {
+                labels: ['Jobs at Risk of Displacement', 'Jobs Transformed or Created'],
+                datasets: [{
+                    label: 'Impact of Automation on Jobs',
+                    data: [40, 60],
+                    backgroundColor: [
+                        brilliantBlues.accentBorder,
+                        brilliantBlues.border,
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+            new Chart(document.getElementById('ethicsDonutChart'), {
+                type: 'doughnut',
+                data: ethicsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        }
+                    }
+                }
+            });
         });
     </script>
 </body>
 </html>
+```
+
+***
+*July 31, 2025, 2:25 PM I
